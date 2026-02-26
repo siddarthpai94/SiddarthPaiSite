@@ -1,0 +1,24 @@
+<footer>
+    <span>&copy; {{ 'now' | date: "%Y" }} Siddarth Pai — siddarthpai.in</span>
+    <span>Built with intention</span>
+</footer>
+
+<script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile nav
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+    });
+</script>

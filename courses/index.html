@@ -1,0 +1,44 @@
+---
+layout: default
+title: Courses
+description: Video courses on engineering, data platforms, and building products at scale.
+---
+
+<div class="page-hero">
+    <div class="hero-eyebrow"><span class="line"></span>Learn</div>
+    <h1>Video <em>Courses</em></h1>
+    <p>Deep dives into the systems, tools, and thinking behind building products at scale.</p>
+</div>
+
+<div class="posts-section">
+    {% if site.courses.size > 0 %}
+    <div class="posts-grid">
+        {% for course in site.courses %}
+        <a href="{{ course.url | relative_url }}" class="course-card reveal">
+            <div class="course-card-thumb">
+                {% if course.thumbnail %}
+                <img src="{{ course.thumbnail | relative_url }}" alt="{{ course.title }}">
+                {% endif %}
+                <div class="play-badge">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+            </div>
+            <div class="course-card-body">
+                {% if course.level %}<span class="course-card-level">{{ course.level }}</span>{% endif %}
+                <div class="course-card-title">{{ course.title }}</div>
+                <div class="course-card-desc">{{ course.description | truncate: 120 }}</div>
+                <div class="course-card-footer">
+                    {% if course.lessons %}<span class="course-lessons">{{ course.lessons }} lessons</span>{% endif %}
+                    <span class="course-card-cta">Watch →</span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <div class="empty-state-icon">🎬</div>
+        <p>Courses launching soon. Stay tuned.</p>
+    </div>
+    {% endif %}
+</div>

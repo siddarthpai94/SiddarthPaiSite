@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<article>
+    <header class="article-header">
+        <a href="{{ '/blog/' | relative_url }}" class="article-back">← Back to Blog</a>
+        {% if page.category %}
+        <span class="post-card-tag">{{ page.category }}</span>
+        {% endif %}
+        <h1>{{ page.title }}</h1>
+        <div class="article-meta">
+            <span class="article-meta-date">{{ page.date | date: "%B %d, %Y" }}</span>
+            {% if page.read_time %}<span>{{ page.read_time }}</span>{% endif %}
+        </div>
+    </header>
+    <div class="article-content">
+        {{ content }}
+    </div>
+</article>

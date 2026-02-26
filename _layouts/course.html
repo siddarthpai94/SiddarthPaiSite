@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article>
+    <header class="article-header">
+        <a href="{{ '/courses/' | relative_url }}" class="article-back">← Back to Courses</a>
+        {% if page.level %}
+        <span class="course-card-level">{{ page.level }}</span>
+        {% endif %}
+        <h1>{{ page.title }}</h1>
+        <div class="article-meta">
+            {% if page.lessons %}<span>{{ page.lessons }} lessons</span>{% endif %}
+            {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
+        </div>
+    </header>
+    <div class="article-content">
+        {% if page.video_id %}
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/{{ page.video_id }}" title="{{ page.title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+
+        {% if page.loom_id %}
+        <div class="video-container">
+            <iframe src="https://www.loom.com/embed/{{ page.loom_id }}" title="{{ page.title }}" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+
+        {{ content }}
+
+        {% if page.modules %}
+        <h2>Course Modules</h2>
+        <div class="modules-list">
+            {% for module in page.modules %}
+            <div class="module-item">
+                <span class="module-number">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+                <span class="module-title">{{ module.title }}</span>
+                {% if module.duration %}<span class="module-duration">{{ module.duration }}</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</article>

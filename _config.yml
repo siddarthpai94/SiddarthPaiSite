@@ -1,0 +1,31 @@
+title: Siddarth Pai
+description: Engineer · Founder · Builder
+url: "https://siddarthpai.in"
+baseurl: ""
+
+permalink: /blog/:title/
+
+collections:
+  courses:
+    output: true
+    permalink: /courses/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "courses"
+    values:
+      layout: "course"
+
+markdown: kramdown
+highlighter: rouge
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
